@@ -38,6 +38,8 @@ def wrap(input, flow):
 if __name__ == '__main__':
     B, C, H, W = 1, 3, 128, 128
 
+
+
     interval = H / 8
     canvas = np.zeros((H, W, C), np.uint8)
     for i in range(1, int(H/interval)):
@@ -45,7 +47,7 @@ if __name__ == '__main__':
     for i in range(1, int(W/interval)):
         cv2.line(canvas, (int(i*interval), 0), (int(i*interval), W), np.random.randint(0, 255, (3,), dtype=int).tolist(), 1)
 
-    canvas = cv2.imread(r"C:\Users\wcirq\Pictures\20220629113117.png")
+    canvas = cv2.imread(r"C:\Users\wcirq\Pictures\20220629111827.png")
     H, W, C = canvas.shape
 
     mean = canvas.mean()
@@ -56,7 +58,7 @@ if __name__ == '__main__':
     inputs = inputs.permute(0, 3, 1, 2)
     inputs = (inputs-mean)/std
 
-    flow = torch.randn((B, 2, H, W)) * 0.1
+    flow = torch.randn((B, 2, H, W))
 
     diagonal_half = sqrt(W**2 + H**2) / 2
     center = (W/2, H/2)
@@ -66,8 +68,8 @@ if __name__ == '__main__':
             y_weight = r - center[1]
             dist = (diagonal_half - sqrt((r-center[1])**2+(c-center[0])**2))/diagonal_half
 
-            flow[0, 0, r, c] = x_weight * dist * 0.5
-            flow[0, 1, r, c] = y_weight * dist * 0.5
+            flow[0, 0, r, c] = x_weight * dist * 1.8
+            flow[0, 1, r, c] = y_weight * dist * 0.8
 
     output = wrap(inputs, flow)
 
