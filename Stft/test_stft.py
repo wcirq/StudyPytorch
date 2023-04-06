@@ -112,7 +112,6 @@ def test_sftp(fre=5, pw=None):
     # plt.axis('on')  # 关掉坐标轴为 off
     # plt.title('image')  # 图像题目
     # plt.show()
-
     print()
 
 
