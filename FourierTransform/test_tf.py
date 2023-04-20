@@ -12,7 +12,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
 
-def generate_signal(fres=[5], sr=44100, total_time=1):
+def generate_signal(fres:list=(5,), sr=44100, total_time=1):
     total_time = total_time  # 秒
     amp = 1000  # 振幅
     phase = 0  # 相位
@@ -25,8 +25,8 @@ def generate_signal(fres=[5], sr=44100, total_time=1):
 
 
 def main():
-    sr = 30  # 采样率
-    signal, _ = generate_signal([2, 4], sr=sr)
+    sr = 300  # 采样率
+    signal, _ = generate_signal([2, 4, 14], sr=sr)
 
     # max_freq = int(sr / 2)  # 一般信号的采样率要大于最大频率的2倍
     max_freq = sr
@@ -36,8 +36,8 @@ def main():
         temp2, _ = generate_signal([freq], sr=ratio*sr)
 
         correlation = (signal * temp).sum()
-        # if abs(correlation)<0.001:
-        #     continue
+        if abs(correlation)<0.001:
+            continue
 
         x = np.arange(0, len(temp2))
 
