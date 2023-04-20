@@ -21,7 +21,7 @@ def generate_autio(fres=[5], total_time=1):
     amp = 1000  # 振幅
     phase = 0  # 相位
     stop = total_time * 2 * np.pi
-    x = np.linspace(0, stop, sr*total_time)
+    x = np.linspace(0, stop, sr*total_time+1)[:-1]
     y = amp * np.sin(fres[0]*x+phase)
     for fre in fres[1:]:
         y += amp * np.sin(fre*x+phase)
