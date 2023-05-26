@@ -12,7 +12,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
 
-def generate_signal(fres:list=(5,), sr=44100, total_time=1):
+def generate_signal(fres:listrt=(5,), sr=44100, total_time=1):
     total_time = total_time  # 秒
     amp = 1000  # 振幅
     phase = 0  # 相位
