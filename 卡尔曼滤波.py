@@ -40,7 +40,7 @@ def main2():
     x_00 = v    # x˙^
 
     for i in range(99):
-        z1 = x0 + v * (i+2) * t + np.random.randint(-20, 20)
+        z1 = x0 + v * (i+1) * t + np.random.randint(-5, 5)
         a1 = 0.2
         b1 = 0.1
         x10 = x00
@@ -48,7 +48,7 @@ def main2():
         x11 = x10 + a1*(z1-x10)
         x_11 = x_10 + b1*((z1-x10)/t)
 
-        x00 = x11
+        x00 = x11 + t * x_11
         x_00 = x_11
 
         print(f"{z1:0.1f} {x11:0.1f} {x_11:0.1f}")
