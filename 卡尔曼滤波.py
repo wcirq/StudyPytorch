@@ -22,7 +22,9 @@ def main():
         print(f"x{i+1},{i+1}: {z1} {x11}")
         measurements.append(z1)
         estimate.append(x11)
-        x00 = x11
+        x21 = x11
+
+        x00 = x21
 
     plt.plot(measurements, label="measurements")
     plt.plot(estimate, label="estimate")
@@ -48,8 +50,11 @@ def main2():
         x11 = x10 + a1*(z1-x10)
         x_11 = x_10 + b1*((z1-x10)/t)
 
-        x00 = x11 + t * x_11
-        x_00 = x_11
+        x21 = x11 + t * x_11
+        x_21 = x_11
+
+        x00 = x21
+        x_00 = x_21
 
         print(f"{z1:0.1f} {x11:0.1f} {x_11:0.1f}")
 
