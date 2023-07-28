@@ -238,7 +238,6 @@ def train_pytorch_amp(gpu, args):
         pin_memory=True,
         sampler=train_sampler)  #
 
-
     vaild_dataset = torchvision.datasets.MNIST(root='./data',
                                                train=False,
                                                transform=transforms.ToTensor(),
